@@ -1,0 +1,11 @@
+Host 172.16.55.72
+    IdentityFile ~/.ssh/id_rsa_yuanjianye
+    User root
+
+Host www.yuanjianye.com
+    IdentityFile ~/.ssh/id_rsa_yuanjianye
+    User root
+
+Host home.yuanjianye.com
+    IdentityFile ~/.ssh/id_rsa_yuanjianye
+    User root
