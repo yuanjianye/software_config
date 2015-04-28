@@ -1,0 +1,17 @@
+#!/bin/bash
+export DISPLAY=":0.0"
+ps|grep -v grep|grep Xorg
+if [ "$?" != "0" ];then
+    Xorg >/dev/null 2>&1 &
+fi
+ps|grep -v grep|grep fcitx 
+if [ "$?" != "0" ];then
+    fcitx >/dev/null 2>&1 &
+fi
+tty_switch tty6 >/dev/null
+firefox -new-tab http://www.baidu.com/s?wd="$*"  >/dev/null 2>&1
+tty_switch tty1 >/dev/null
+sleep 1
+killall -9 fcitx
+killall -9 Xorg
+

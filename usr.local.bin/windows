@@ -1,0 +1,16 @@
+#!/bin/bash
+export DISPLAY=":0.0"
+ps|grep -v grep|grep Xorg
+if [ "$?" != "0" ];then
+    Xorg -nocursor >/dev/null 2>&1 &
+    sleep 1
+fi
+ps|grep -v grep|grep fcitx 
+if [ "$?" != "0" ];then
+    fcitx >/dev/null 2>&1 &
+fi
+rdesktop 172.16.55.226
+sleep 1
+killall -9 fcitx
+killall -9 Xorg
+

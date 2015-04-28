@@ -1,0 +1,92 @@
+#!/bin/bash
+
+start(){
+    ip link add name vetha1 type veth peer name vethb1
+    ifconfig eth0 0.0.0.0 up
+    ifconfig eth1 0.0.0.0 up
+    ifconfig vetha1 0.0.0.0 up
+    brctl addbr br0
+    brctl addif br0 eth0
+    brctl addif br0 eth1
+    brctl addif br0 vetha1
+    ifconfig br0 0.0.0.0 up
+    ifconfig vethb1 172.16.55.91 netmask 255.255.255.0 up
+    route add default gw 172.16.55.254
+    echo "nameserver 172.16.53.2" >/etc/resolv.conf
+    echo "nameserver 172.16.53.15" >>/etc/resolv.conf
+
+    echo "Start firewall"
+
+    /sbin/depmod -a
+    /sbin/modprobe ip_tables
+    /sbin/modprobe ip_conntrack
+    /sbin/modprobe iptable_filter
+    /sbin/modprobe iptable_mangle
+    /sbin/modprobe iptable_nat
+    /sbin/modprobe ipt_LOG
+    /sbin/modprobe ipt_limit
+    /sbin/modprobe ipt_state
+    echo "1" > /proc/sys/net/ipv4/ip_forward
+
+    iptables -t nat -A POSTROUTING -s 172.16.55.90  -j SNAT --to 172.16.55.91
+    iptables -t nat -A POSTROUTING -s 172.16.55.131 -j SNAT --to 172.16.55.91
+    iptables -t nat -A POSTROUTING -s 172.16.55.132 -j SNAT --to 172.16.55.91
+    iptables -t nat -A POSTROUTING -s 172.16.55.133 -j SNAT --to 172.16.55.91
+    iptables -t nat -A POSTROUTING -s 172.16.55.134 -j SNAT --to 172.16.55.91
+    iptables -t nat -A POSTROUTING -s 172.16.55.135 -j SNAT --to 172.16.55.91
+    iptables -t nat -A POSTROUTING -s 172.16.55.136 -j SNAT --to 172.16.55.91
+    iptables -t nat -A POSTROUTING -s 172.16.55.138 -j SNAT --to 172.16.55.91
+    iptables -t nat -A POSTROUTING -s 172.16.55.143 -j SNAT --to 172.16.55.91
+    iptables -t nat -A POSTROUTING -s 172.16.55.220 -j SNAT --to 172.16.55.91
+    iptables -t nat -A POSTROUTING -s 172.16.55.224 -j SNAT --to 172.16.55.91
+    iptables -t nat -A POSTROUTING -s 172.16.55.226 -o vethb1 -j SNAT --to 172.16.55.91
+}
+stop(){
+
+    echo "Stop firewall"
+    ifconfig br0 down
+    brctl delbr br0
+    ip link delete vetha1
+    echo "0" > /proc/sys/net/ipv4/ip_forward
+    iptables -P INPUT ACCEPT
+    iptables -P FORWARD ACCEPT
+    iptables -P OUTPUT ACCEPT
+    iptables -t nat -P PREROUTING ACCEPT
+    iptables -t nat -P POSTROUTING ACCEPT
+    iptables -t nat -P OUTPUT ACCEPT
+    iptables -t mangle -P PREROUTING ACCEPT
+    iptables -t mangle -P OUTPUT ACCEPT
+    iptables -F
+    iptables -t nat -F
+    iptables -t mangle -F
+    iptables -X
+    iptables -t nat -X
+    iptables -t mangle -X
+}
+status(){
+    clear
+    echo "-------------------------------------------------------------------"
+    iptables -L
+    echo "-------------------------------------------------------------------"
+    iptables -t nat -L POSTROUTING
+    echo "-------------------------------------------------------------------"
+    iptables -t nat -L PREROUTING
+}
+case "$1" in
+start)
+        start
+;;
+stop)
+        stop
+;;
+status)
+        status
+;;
+restart)
+        stop
+        start
+;;
+*)
+        echo "$0 [start|stop|restart|status]"
+;;
+esac

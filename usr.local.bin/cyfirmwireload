@@ -1,0 +1,6 @@
+#!/bin/sh
+USB_MAYOR=`lsusb|grep Cypress|awk '{print $2}'`
+USB_MINOR=`lsusb|grep Cypress|awk '{print $4}'|awk -F : '{print $1}'`
+CY_DEV_PATH=/dev/bus/usb/$USB_MAYOR/$USB_MINOR
+echo $CY_DEV_PATH
+fxload -t fx2lp -D $CY_DEV_PATH -I $1
