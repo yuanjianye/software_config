@@ -1,0 +1,201 @@
+"---------------------------------------------------
+runtime! debian.vim
+"---------------------------------------------------
+
+" encodeing config
+let &termencoding=&encoding
+set fileencodings=utf-8,gbk,gb2312,ucs-bom,cp936
+
+" map exit key
+nmap ZZ :wqall<CR>
+nmap <C-c> :qa!<CR>
+map! <F9> <ESC><ESC>:set paste
+map! <F10> <ESC><ESC>:set nopaste
+nmap <F9> <ESC><ESC>:set paste
+nmap <F10> <ESC><ESC>:set nopaste
+map! <F8> <ESC><ESC>:%! astyle -A1 -SKNfwpDx -M80<CR>
+nmap <F8> <ESC><ESC>:%! astyle -A1 -SKNfwpDx -M80<CR>
+"nmap <C-1> <ESC><ESC><C-w>h<CR><C-w>k<CR><C-w>h<CR>
+"map! <C-1> <ESC><ESC><C-w>h<CR><C-w>k<CR><C-w>h<CR>
+" noremap  <C-Esc>       :close<CR>
+"inoremap  <C-Esc>  <C-C>:close<CR>
+"nnoremap  <C-q>    :wqall<CR>
+
+set nocompatible        " use vim as vim, should be put at the very start 
+set history=1000        " lines of Ex-mode commands, search history 
+set browsedir=buffer    " use directory of the related buffer for file browser 
+set clipboard+=unnamed  " use clipboard register '*' for all y, d, c, p ops 
+set viminfo+=!          " make sure it can save viminfo 
+set isk+=$,%,#,-        " none of these should be word dividers 
+set confirm             " raise a dialog confirm whether to save changed buffer 
+set ffs=unix,dos,mac    " favor unix ff, which behaves good under bot Winz & Linux 
+set fenc=utf-8          " default fileencoding 
+set fencs=utf-8,ucs-bom,euc-jp,gb18030,gbk,gb2312,cp936 
+map Q gq                " don't use Ex-mode, use Q for formatting 
+"filetype on             " enable file type detection 
+"filetype plugin on      " enable loading the plugin for appropriate file type 
+ 
+"------------------------------------------------------------------------------------- 
+" platform dependent 
+"------------------------------------------------------------------------------------- 
+if has("win32") 
+let $VIMDATA = $VIM.'/vimdata' 
+let $VIMFILES = $VIM.'/vimfiles' 
+let PYTHON_BIN_PATH = 'd:/foo/python/python.exe' " ensure the path right 
+else 
+let $VIMDATA = $HOME.'/.vim/data' 
+let $VIMFILES = $HOME.'/.vim' 
+let PYTHON_BIN_PATH = '/usr/bin/python' 
+set guifont=courier\ 10 
+endif 
+ 
+"------------------------------------------------------------------------------------- 
+" path/backup 
+"------------------------------------------------------------------------------------- 
+set backup                          " make backup file and leave it around 
+set backupdir=$VIMDATA/backup       " where to put backup file 
+set directory=$VIMDATA/temp         " where to put swap file 
+set runtimepath+=$VIMDATA           " add this path to rtp, support GetLatestVimScripts.vim 
+set path=.,/usr/include/*,,         " where gf, ^Wf, :find will search 
+set tags=./tags,tags,$VIMRUNTIME/doc/tags,$VIMFILES/doc/tags 
+                                    " tags files CTRL-] uses 
+set makeef=error.err                " the errorfile for :make and :grep 
+ 
+"------------------------------------------------------------------------------------- 
+" colors 
+"------------------------------------------------------------------------------------- 
+colorscheme desert
+set background=dark                 " use a dark background 
+syntax on                           " syntax highlighting 
+ 
+"------------------------------------------------------------------------------------- 
+" gui-only settings 
+"------------------------------------------------------------------------------------- 
+if has("gui_running") 
+colo inkpot                         " colorscheme, inkpot.vim 
+set lines=40                        " window tall and wide, only if gui_running, 
+set columns=120                     " or vim under console behaves badly 
+endif 
+ 
+"------------------------------------------------------------------------------------- 
+" Vim UI 
+"------------------------------------------------------------------------------------- 
+set linespace=0                     " space it out a little more (easier to read) 
+set wildmenu                        " type :h and press <Tab> to look what happens 
+set ruler                           " always show current position along the bottom 
+set cmdheight=1                     " use 2 screen lines for command-line 
+set lazyredraw                      " do not redraw while executing macros (much faster) 
+set nonumber                        " don't print line number 
+set hid                             " allow to change buffer without saving 
+set backspace=2                     " make backspace work normal 
+"set whichwrap+=<,>,h,l              " allow backspace and cursor keys to wrap 
+set mouse=a                         " use mouse in all modes 
+set shortmess=atI                   " shorten messages to avoid 'press a key' prompt 
+set report=0                        " tell us when anything is changed via :... 
+set fillchars=vert:\ ,stl:\ ,stlnc:\ 
+                                    " make the splitters between windows be blank 
+ 
+"------------------------------------------------------------------------------------- 
+" visual cues 
+"------------------------------------------------------------------------------------- 
+
+set showmatch                       " show matching paren 
+set matchtime=5                     " 1/10 second to show the matching paren 
+"set nohlsearch                     " do not highlight searched for phrases 
+set incsearch                       " BUT do highlight where the so far typed pattern matches 
+set scrolloff=10                     " minimal number of lines to keep above/below the cursor 
+set novisualbell                    " use visual bell instead of beeping 
+set noerrorbells                    " do not make noise 
+"set laststatus=2                    " always show the status line 
+"set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$ 
+                                    " what to show while :set list 
+"set statusline=%{VimBuddy()}\ %F%m%r%h%w\ [%{&ff}]\ [%Y]\ [\%03.3b\ \%02.2B]\ [%02v\ %03l\ %L\ %p%%] 
+"set statusline=%{VimBuddy()}\ %F%m%r%h%w\ [%03l\ %02v\ %p%%\ %L]\ [%{&ff}]\ [%Y]\ [\%03.3b\ \%02.2B] 
+ 
+"------------------------------------------------------------------------------------- 
+" text formatting/layout 
+"------------------------------------------------------------------------------------- 
+set ai                              " autoindent 
+set si                              " smartindent 
+set cindent                         " do C-style indenting 
+set fo=tcrqn                        " see help (complex) 
+set tabstop=4                       " tab spacing (settings below are just to unify it) 
+set expandtab                       " use spaces replace tabs
+set softtabstop=4                   " unify 
+set shiftwidth=4                    " unify 
+"set noexpandtab                    " real tabs please! 
+"set smarttab                       " use tabs at the start of a line, spaces elsewhere 
+"set nowrap                         " do not wrap lines 
+set formatoptions+=mM               " so that vim can reformat multibyte text (e.g. Chinese) 
+
+ 
+"------------------------------------------------------------------------------------- 
+" folding 
+"------------------------------------------------------------------------------------- 
+set foldenable                      " turn on folding 
+set foldmethod=indent               " make folding indent sensitive 
+set foldlevel=100                   " don't autofold anything (but I can still fold manually) 
+set foldopen -=search               " don't open folds when you search into them 
+set foldopen -=undo                 " don't open folds when you undo stuff 
+ 
+" Tlist plugin config 
+"let Tlist_Close_On_Select=1
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=1
+let Tlist_GainFocus_On_ToggleOpen = 1
+let tlist_make_settings  = 'make;m:makros;t:targets'
+let tlist_qmake_settings = 'qmake;t:SystemVariables'
+
+" winmanager config
+let g:winManagerWindowLayout='FileExplorer|TagList'
+nmap wm :b!1<CR>:only!<CR>:resize 200<CR>:e!~/.vim/file.tmp<CR>:WMToggle<CR>:b!1<CR><C-w>k<C-w>J:resize 1<CR><C-w>k<C-w>l<C-w>H:vertical resize 95<CR><C-l><C-k>w:resize 15<CR><C-w>h<C-w>k:b!1<CR>
+
+" cscope config
+set cscopequickfix=s-,c-,d-,i-,t-,e-
+
+" cscopekeymap
+nmap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+" minibufexplorer config
+let g:miniBufExplMapCTabSwitchBufs = 1 
+let g:miniBufExplMapWindowNavVim = 1 
+let g:miniBufExplMapWindowNavArrows = 1 
+let g:miniBufExplModSelTarget = 1
+" let g:miniBufExplorerMoreThanOne=0
+
+" a.vim config (key map)
+nnoremap <silent> <F12> :A<CR>
+
+" grep.vim config
+nnoremap <silent> <F6> :Rgrep<CR>
+nnoremap <silent> <F7> :!clear && sdcv -n <cword><CR>
+
+"doxygentoolkit.vim config
+"let g:DoxygenToolkit_briefTag_pre="@说明  "
+"let g:DoxygenToolkit_paramTag_pre="@参数 "
+"let g:DoxygenToolkit_returnTag="@返回值   "
+"let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------"
+"let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------"
+let g:DoxygenToolkit_authorName="yuanjianye"
+let g:DoxygenToolkit_licenseTag="GPL" 
+" c.vim config
+" let g:C_Ctrl_j = 0 
+
+" complete
+"filetype plugin indent on 
+"set completeopt=longest,menu 
+"let g:SuperTabRetainCompletionType=52
+"let g:SuperTabDefaultCompletionType="<C-X><C-O>"
+
+
+" addtiong vimrc
+if filereadable("/etc/vim/vimrc.local")
+  source /etc/vim/vimrc.local
+endif
