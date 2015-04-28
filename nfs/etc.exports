@@ -1,0 +1,23 @@
+# /etc/exports: the access control list for filesystems which may be exported
+#		to NFS clients.  See exports(5).
+#
+# Example for NFSv2 and NFSv3:
+# /srv/homes       hostname1(rw,sync,no_subtree_check) hostname2(ro,sync,no_subtree_check)
+#
+# Example for NFSv4:
+# /srv/nfs4        gss/krb5i(rw,sync,fsid=0,crossmnt,no_subtree_check)
+# /srv/nfs4/homes  gss/krb5i(rw,sync,no_subtree_check)
+#
+#/nfs        *(rw,sync,no_root_squash,no_subtree_check)
+#/home/nfs_trident  *(rw,sync,no_root_squash,no_subtree_check)
+#/home/nfs   *(rw,sync,no_root_squash,no_subtree_check)
+#/home/nfs_h1   *(rw,sync,no_root_squash,no_subtree_check)
+#/home/nfs_h1_rec   *(rw,sync,no_root_squash,no_subtree_check)
+/home   *(rw,sync,no_root_squash,no_subtree_check)
+/home/work   *(rw,sync,no_root_squash,no_subtree_check)
+/home/jinglun/tongjia_m201   *(rw,sync,no_root_squash,no_subtree_check)
+/home/nfs/filesystem   *(rw,sync,no_root_squash,no_subtree_check)
+#/home/ubuntu_arm   *(rw,sync,no_root_squash,no_subtree_check)
+#/home/nfs_a10   *(rw,sync,no_root_squash,no_subtree_check)
+#/home/jinglun/h1/homelet   *(rw,sync,no_root_squash,no_subtree_check)
+#/home/.svnserver/git_server  *(rw,sync,no_root_squash,no_subtree_check)
