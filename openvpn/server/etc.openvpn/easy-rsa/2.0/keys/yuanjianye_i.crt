@@ -1,0 +1,73 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 15 (0xf)
+    Signature Algorithm: sha1WithRSAEncryption
+        Issuer: C=CN, ST=HB, L=WH, O=HUST, OU=CS, CN=lichenggui/name=lichenggui/emailAddress=lichenggui@routon.com
+        Validity
+            Not Before: Sep 26 08:29:50 2014 GMT
+            Not After : Sep 23 08:29:50 2024 GMT
+        Subject: C=CN, ST=HB, L=WH, O=HUST, OU=changeme, CN=yuanjianye_i/name=changeme/emailAddress=yuanjianye@126.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (1024 bit)
+                Modulus:
+                    00:c7:7c:0b:90:8b:81:ea:a8:a8:df:36:a7:7c:87:
+                    37:9a:d2:4c:9f:9a:d3:dd:3b:49:2d:18:28:7d:17:
+                    69:12:b1:5c:b1:56:1b:9c:4c:af:52:60:af:b1:51:
+                    5c:85:9d:c0:37:3f:8e:6e:ed:85:e7:8c:d6:f1:16:
+                    64:85:a2:33:0f:74:36:8a:1a:6c:7c:40:9d:fe:01:
+                    18:5c:e8:e5:a3:f4:09:79:b8:3f:6c:4b:78:6a:46:
+                    2c:23:f0:43:27:6f:88:15:30:d9:7d:96:61:45:58:
+                    2c:b7:4d:84:77:13:8c:dd:06:be:4c:f7:1a:76:21:
+                    c8:79:f0:79:7b:05:74:98:1b
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                Easy-RSA Generated Certificate
+            X509v3 Subject Key Identifier: 
+                6A:9B:23:66:4A:E0:F0:71:9E:92:10:C9:D3:18:DA:23:C1:02:A6:CC
+            X509v3 Authority Key Identifier: 
+                keyid:B3:50:E4:12:A0:C6:1A:6F:A9:42:2E:D3:EA:CF:21:10:1B:0C:8E:FC
+                DirName:/C=CN/ST=HB/L=WH/O=HUST/OU=CS/CN=lichenggui/name=lichenggui/emailAddress=lichenggui@routon.com
+                serial:A6:A6:75:FA:F6:47:F8:98
+
+            X509v3 Extended Key Usage: 
+                TLS Web Client Authentication
+            X509v3 Key Usage: 
+                Digital Signature
+    Signature Algorithm: sha1WithRSAEncryption
+         2b:45:a9:59:26:2a:a0:65:2d:3e:ce:54:28:22:be:db:c0:b2:
+         d7:3c:c9:f9:fd:87:60:53:20:83:68:f8:28:72:66:0a:30:12:
+         8d:b8:0f:c0:a5:9e:11:85:5b:a7:7f:77:1e:a2:3b:d7:cf:67:
+         6a:f0:ec:1b:ff:b6:b3:78:88:e3:4a:96:f2:7e:a3:8c:85:11:
+         25:c3:93:50:33:87:c3:e6:c2:0b:89:fc:bb:2d:fe:7f:7b:fd:
+         c1:61:f9:68:6c:36:4b:87:88:77:27:cd:aa:ae:43:4f:85:7a:
+         73:14:91:75:44:c6:0a:85:7d:dd:67:51:28:4d:14:d0:a5:f6:
+         52:8c
+-----BEGIN CERTIFICATE-----
+MIID7TCCA1agAwIBAgIBDzANBgkqhkiG9w0BAQUFADCBkzELMAkGA1UEBhMCQ04x
+CzAJBgNVBAgTAkhCMQswCQYDVQQHEwJXSDENMAsGA1UEChMESFVTVDELMAkGA1UE
+CxMCQ1MxEzARBgNVBAMTCmxpY2hlbmdndWkxEzARBgNVBCkTCmxpY2hlbmdndWkx
+JDAiBgkqhkiG9w0BCQEWFWxpY2hlbmdndWlAcm91dG9uLmNvbTAeFw0xNDA5MjYw
+ODI5NTBaFw0yNDA5MjMwODI5NTBaMIGWMQswCQYDVQQGEwJDTjELMAkGA1UECBMC
+SEIxCzAJBgNVBAcTAldIMQ0wCwYDVQQKEwRIVVNUMREwDwYDVQQLEwhjaGFuZ2Vt
+ZTEVMBMGA1UEAxQMeXVhbmppYW55ZV9pMREwDwYDVQQpEwhjaGFuZ2VtZTEhMB8G
+CSqGSIb3DQEJARYSeXVhbmppYW55ZUAxMjYuY29tMIGfMA0GCSqGSIb3DQEBAQUA
+A4GNADCBiQKBgQDHfAuQi4HqqKjfNqd8hzea0kyfmtPdO0ktGCh9F2kSsVyxVhuc
+TK9SYK+xUVyFncA3P45u7YXnjNbxFmSFojMPdDaKGmx8QJ3+ARhc6OWj9Al5uD9s
+S3hqRiwj8EMnb4gVMNl9lmFFWCy3TYR3E4zdBr5M9xp2Ich58Hl7BXSYGwIDAQAB
+o4IBSjCCAUYwCQYDVR0TBAIwADAtBglghkgBhvhCAQ0EIBYeRWFzeS1SU0EgR2Vu
+ZXJhdGVkIENlcnRpZmljYXRlMB0GA1UdDgQWBBRqmyNmSuDwcZ6SEMnTGNojwQKm
+zDCByAYDVR0jBIHAMIG9gBSzUOQSoMYab6lCLtPqzyEQGwyO/KGBmaSBljCBkzEL
+MAkGA1UEBhMCQ04xCzAJBgNVBAgTAkhCMQswCQYDVQQHEwJXSDENMAsGA1UEChME
+SFVTVDELMAkGA1UECxMCQ1MxEzARBgNVBAMTCmxpY2hlbmdndWkxEzARBgNVBCkT
+CmxpY2hlbmdndWkxJDAiBgkqhkiG9w0BCQEWFWxpY2hlbmdndWlAcm91dG9uLmNv
+bYIJAKamdfr2R/iYMBMGA1UdJQQMMAoGCCsGAQUFBwMCMAsGA1UdDwQEAwIHgDAN
+BgkqhkiG9w0BAQUFAAOBgQArRalZJiqgZS0+zlQoIr7bwLLXPMn5/YdgUyCDaPgo
+cmYKMBKNuA/ApZ4RhVunf3ceojvXz2dq8Owb/7azeIjjSpbyfqOMhRElw5NQM4fD
+5sILify7Lf5/e/3BYflobDZLh4h3J82qrkNPhXpzFJF1RMYKhX3dZ1EoTRTQpfZS
+jA==
+-----END CERTIFICATE-----
