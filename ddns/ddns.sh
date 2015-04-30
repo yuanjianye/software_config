@@ -1,3 +1,5 @@
+#!/bin/bash
+export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin
 cd /tmp/
 mkdir myddns
 cd myddns
@@ -22,3 +24,4 @@ else
     echo "wget error" >&2
 fi
 rm -r /tmp/myddns
+date >>/tmp/ddns.log
