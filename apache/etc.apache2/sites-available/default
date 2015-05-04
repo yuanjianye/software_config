@@ -4,7 +4,7 @@
 	DocumentRoot /home/work/www
 	<Directory />
 		Options FollowSymLinks
-		AllowOverride None
+		AllowOverride All
 	</Directory>
 	<Directory /home/work/www>
 		Options Indexes FollowSymLinks MultiViews
