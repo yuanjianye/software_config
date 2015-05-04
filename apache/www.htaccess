@@ -1,0 +1,6 @@
+RewriteEngine On 
+RewriteCond %{HTTP_HOST} ^dev.yuanjianye.com [NC] 
+RewriteRule ^(.*)$ http://home.yuanjianye.com:808/$1 [L,R=301]
+
+ErrorDocument 401 "No Permission"
+ErrorDocument 404 "File Not Found"
